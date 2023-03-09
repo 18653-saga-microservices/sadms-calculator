@@ -6,30 +6,22 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-@app.route('/add')
+@app.route('/calculate')
 def add():
+    first_number = int(request.args.get('first_number'))
+    second_number = int(request.args.get('second_number'))
+    operation = request.args.get('operation')
+    print(first_number, second_number, operation)
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = calculator_pb2_grpc.CalculatorStub(channel)
-        operand1 = int(request.args.get('a'))
-        operand2 = int(request.args.get('b'))
-        print(operand1, operand2)
-        add_request = calculator_pb2.AddRequest(
-            operand1=operand1, operand2=operand2)
-        response = stub.Add(add_request)
-        print(response.result)
-        return str(response.result)
-
-
-@app.route('/multiply')
-def multiply():
-    with grpc.insecure_channel('localhost:50051') as channel:
-        stub = calculator_pb2_grpc.CalculatorStub(channel)
-        operand1 = int(request.args.get('a'))
-        operand2 = int(request.args.get('b'))
-        print(operand1, operand2)
-        multiply_request = calculator_pb2.MultiplyRequest(
-            operand1=operand1, operand2=operand2)
-        response = stub.Multiply(multiply_request)
+        add_request = calculator_pb2.Request(
+            first_number=first_number, second_number=second_number)
+        if operation == 'add':
+            response = stub.Add(add_request)
+        elif operation == 'multiply':
+            response = stub.Multiply(add_request)
+        else:
+            return ("illegal operation")
         print(response.result)
         return str(response.result)
 

@@ -16,13 +16,13 @@ class CalculatorStub(object):
         """
         self.Add = channel.unary_unary(
                 '/calculator.Calculator/Add',
-                request_serializer=calculator__pb2.AddRequest.SerializeToString,
-                response_deserializer=calculator__pb2.AddResponse.FromString,
+                request_serializer=calculator__pb2.Request.SerializeToString,
+                response_deserializer=calculator__pb2.Response.FromString,
                 )
         self.Multiply = channel.unary_unary(
                 '/calculator.Calculator/Multiply',
-                request_serializer=calculator__pb2.MultiplyRequest.SerializeToString,
-                response_deserializer=calculator__pb2.MultiplyResponse.FromString,
+                request_serializer=calculator__pb2.Request.SerializeToString,
+                response_deserializer=calculator__pb2.Response.FromString,
                 )
 
 
@@ -48,13 +48,13 @@ def add_CalculatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Add': grpc.unary_unary_rpc_method_handler(
                     servicer.Add,
-                    request_deserializer=calculator__pb2.AddRequest.FromString,
-                    response_serializer=calculator__pb2.AddResponse.SerializeToString,
+                    request_deserializer=calculator__pb2.Request.FromString,
+                    response_serializer=calculator__pb2.Response.SerializeToString,
             ),
             'Multiply': grpc.unary_unary_rpc_method_handler(
                     servicer.Multiply,
-                    request_deserializer=calculator__pb2.MultiplyRequest.FromString,
-                    response_serializer=calculator__pb2.MultiplyResponse.SerializeToString,
+                    request_deserializer=calculator__pb2.Request.FromString,
+                    response_serializer=calculator__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -78,8 +78,8 @@ class Calculator(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/Add',
-            calculator__pb2.AddRequest.SerializeToString,
-            calculator__pb2.AddResponse.FromString,
+            calculator__pb2.Request.SerializeToString,
+            calculator__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -95,7 +95,7 @@ class Calculator(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/Multiply',
-            calculator__pb2.MultiplyRequest.SerializeToString,
-            calculator__pb2.MultiplyResponse.FromString,
+            calculator__pb2.Request.SerializeToString,
+            calculator__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

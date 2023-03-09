@@ -6,13 +6,13 @@ import calculator_pb2_grpc
 
 class Calculator(calculator_pb2_grpc.CalculatorServicer):
     def Add(self, request, context):
-        result = request.operand1 + request.operand2
-        response = calculator_pb2.AddResponse(result=result)
+        result = request.first_number + request.second_number
+        response = calculator_pb2.Response(result=result)
         return response
 
     def Multiply(self, request, context):
-        result = request.operand1 * request.operand2
-        response = calculator_pb2.MultiplyResponse(result=result)
+        result = request.first_number * request.second_number
+        response = calculator_pb2.Response(result=result)
         return response
 
 

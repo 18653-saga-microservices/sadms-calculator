@@ -8,6 +8,12 @@ service Calculator {
 
   // Multiplies two numbers
   rpc Multiply(Request) returns (Response) {}
+
+  // Subtract two numbers
+  rpc Subtract(Request) returns (Response) {}
+
+  // Divide two numbers
+  rpc Divide(Request) returns (Response) {}
 }
 
 message Request {

@@ -20,6 +20,10 @@ def add():
             response = stub.Add(add_request)
         elif operation == 'multiply':
             response = stub.Multiply(add_request)
+        elif operation == 'subtract':
+            response = stub.Subtract(add_request)
+        elif operation == 'divide':
+            response = stub.Divide(add_request)
         else:
             return ("illegal operation")
         print(response.result)

@@ -24,6 +24,16 @@ class CalculatorStub(object):
                 request_serializer=calculator__pb2.Request.SerializeToString,
                 response_deserializer=calculator__pb2.Response.FromString,
                 )
+        self.Subtract = channel.unary_unary(
+                '/calculator.Calculator/Subtract',
+                request_serializer=calculator__pb2.Request.SerializeToString,
+                response_deserializer=calculator__pb2.Response.FromString,
+                )
+        self.Divide = channel.unary_unary(
+                '/calculator.Calculator/Divide',
+                request_serializer=calculator__pb2.Request.SerializeToString,
+                response_deserializer=calculator__pb2.Response.FromString,
+                )
 
 
 class CalculatorServicer(object):
@@ -43,6 +53,20 @@ class CalculatorServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subtract(self, request, context):
+        """Multiplies two numbers
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Divide(self, request, context):
+        """Multiplies two numbers
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CalculatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -53,6 +77,16 @@ def add_CalculatorServicer_to_server(servicer, server):
             ),
             'Multiply': grpc.unary_unary_rpc_method_handler(
                     servicer.Multiply,
+                    request_deserializer=calculator__pb2.Request.FromString,
+                    response_serializer=calculator__pb2.Response.SerializeToString,
+            ),
+            'Subtract': grpc.unary_unary_rpc_method_handler(
+                    servicer.Subtract,
+                    request_deserializer=calculator__pb2.Request.FromString,
+                    response_serializer=calculator__pb2.Response.SerializeToString,
+            ),
+            'Divide': grpc.unary_unary_rpc_method_handler(
+                    servicer.Divide,
                     request_deserializer=calculator__pb2.Request.FromString,
                     response_serializer=calculator__pb2.Response.SerializeToString,
             ),
@@ -95,6 +129,40 @@ class Calculator(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/Multiply',
+            calculator__pb2.Request.SerializeToString,
+            calculator__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Subtract(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/Subtract',
+            calculator__pb2.Request.SerializeToString,
+            calculator__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Divide(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/Divide',
             calculator__pb2.Request.SerializeToString,
             calculator__pb2.Response.FromString,
             options, channel_credentials,

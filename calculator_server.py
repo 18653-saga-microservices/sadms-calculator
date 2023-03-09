@@ -15,6 +15,16 @@ class Calculator(calculator_pb2_grpc.CalculatorServicer):
         response = calculator_pb2.Response(result=result)
         return response
 
+    def Subtract(self, request, context):
+        result = request.first_number - request.second_number
+        response = calculator_pb2.Response(result=result)
+        return response
+
+    def Divide(self, request, context):
+        result = request.first_number / request.second_number
+        response = calculator_pb2.Response(result=result)
+        return response
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

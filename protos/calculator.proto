@@ -16,6 +16,7 @@ service Calculator {
   rpc Divide(Request) returns (Response) {}
 }
 
+
 message Request {
   int32 first_number = 1;
   int32 second_number = 2;

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package registry;
+
+service RegistryService {
+  // Adds two numbers
+  rpc RegisterService (RegistryRequest) returns (RegistryResponse) {}
+
+}
+
+message RegistryRequest {
+  string serviceName = 1;
+  string serviceAddress = 2;
+  int32 servicePort = 3;
+}
+
+message RegistryResponse {
+  string serviceID = 1;
+}

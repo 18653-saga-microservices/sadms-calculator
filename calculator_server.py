@@ -2,7 +2,8 @@ from concurrent import futures
 import grpc
 import calculator_pb2
 import calculator_pb2_grpc
-
+import registry_pb2
+import registry_pb2_grpc
 
 class Calculator(calculator_pb2_grpc.CalculatorServicer):
     def Add(self, request, context):
@@ -30,6 +31,16 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     calculator_pb2_grpc.add_CalculatorServicer_to_server(Calculator(), server)
     server.add_insecure_port('[::]:50051')
+    with grpc.insecure_channel('localhost:40001') as channel:
+        stub = registry_pb2_grpc.RegistryStub(channel)
+        serviceAddress = 'localhost'
+        servicePort = 50051
+        serviceName = 'Calculator'
+        registryRequest = registry_pb2.RegistryRequest(
+            serviceName=serviceName, serviceAddress=serviceAddress,
+            servicePort=servicePort)
+        response = stub.Register(registryRequest)
+        print(response.serviceID)
     server.start()
     server.wait_for_termination()
 

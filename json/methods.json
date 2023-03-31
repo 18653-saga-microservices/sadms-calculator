@@ -1,0 +1,62 @@
+{
+  "name": "calculator",
+  "id": 456,
+  "methods": [
+    {
+      "name": "Add",
+      "id": 1,
+      "params": [
+        {
+          "type": "int32",
+          "name": "first_number"
+        },
+        {
+          "type": "int32",
+          "name": "second_number"
+        }
+      ]
+    },
+    {
+      "name": "Multiply",
+      "id": 2,
+      "params": [
+        {
+          "type": "int32",
+          "name": "first_number"
+        },
+        {
+          "type": "int32",
+          "name": "second_number"
+        }
+      ]
+    },
+    {
+      "name": "Subtract",
+      "id": 3,
+      "params": [
+        {
+          "type": "int32",
+          "name": "first_number"
+        },
+        {
+          "type": "int32",
+          "name": "second_number"
+        }
+      ]
+    },
+    {
+      "name": "Divide",
+      "id": 4,
+      "params": [
+        {
+          "type": "int32",
+          "name": "first_number"
+        },
+        {
+          "type": "int32",
+          "name": "second_number"
+        }
+      ]
+    }
+  ]
+}

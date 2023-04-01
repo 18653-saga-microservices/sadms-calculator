@@ -15,5 +15,5 @@ message RegistryRequest {
 }
 
 message RegistryResponse {
-  string serviceID = 1;
+  string serviceName = 1;
 }

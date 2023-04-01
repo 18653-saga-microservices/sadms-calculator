@@ -31,7 +31,10 @@ class Calculator(calculator_pb2_grpc.CalculatorServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     calculator_pb2_grpc.add_CalculatorServicer_to_server(Calculator(), server)
-    register_microservice()
+    register_microservice() # TODO get response and error handle.
+    # if error:
+    #    print(error)
+    #    exit(0)
     server.add_insecure_port('[::]:50051')
     with grpc.insecure_channel('localhost:40001') as channel:
         stub = registry_pb2_grpc.RegistryStub(channel)

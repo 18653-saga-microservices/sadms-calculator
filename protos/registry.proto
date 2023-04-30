@@ -3,9 +3,7 @@ syntax = "proto3";
 package registry;
 
 service RegistryService {
-  // Adds two numbers
   rpc RegisterService (RegistryRequest) returns (RegistryResponse) {}
-
 }
 
 message RegistryRequest {
@@ -14,6 +12,12 @@ message RegistryRequest {
   int32 servicePort = 3;
 }
 
+message Status {
+  int32 code = 1;
+  string message = 2;
+}
+
 message RegistryResponse {
   string serviceName = 1;
+  Status status = 2;
 }

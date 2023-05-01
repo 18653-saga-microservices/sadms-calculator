@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import calculator_pb2 as calculator__pb2
+from . import calculator_pb2 as calculator__pb2
 
 
 class CalculatorStub(object):
@@ -40,29 +40,25 @@ class CalculatorServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def Add(self, request, context):
-        """Adds two numbers
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Multiply(self, request, context):
-        """Multiplies two numbers
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Subtract(self, request, context):
-        """Multiplies two numbers
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Divide(self, request, context):
-        """Multiplies two numbers
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')

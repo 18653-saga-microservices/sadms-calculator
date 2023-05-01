@@ -14,14 +14,11 @@ message Request {
   int32 second_number = 2;
 }
 
-message Status {
-  int32 code = 1;
-  string message = 2;
-}
 
 message Response {
   int32 result = 1;
-  Status status = 2;
+  int32 status = 2;
+  string message = 3;
 }
 
 

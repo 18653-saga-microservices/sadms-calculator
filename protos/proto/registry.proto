@@ -12,12 +12,9 @@ message RegistryRequest {
   int32 servicePort = 3;
 }
 
-message Status {
-  int32 code = 1;
-  string message = 2;
-}
-
 message RegistryResponse {
-  string serviceName = 1;
-  Status status = 2;
+  string serviceId = 1;
+  string serviceName = 2;
+  int32 status = 3;
+  string message = 4;
 }
